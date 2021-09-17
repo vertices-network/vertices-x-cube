@@ -1,0 +1,5 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Utils/cloud.c:69:6:dialog_ask	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Utils/cloud.c:91:5:platform_init	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Utils/cloud.c:192:6:platform_deinit	8	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Utils/cloud.c:210:13:hnet_notify	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Utils/cloud.c:281:13:IOTA_Error_Handler	16	static

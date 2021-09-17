@@ -1,0 +1,2 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/platform_util.c:73:6:mbedtls_platform_zeroize	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/platform_util.c:106:12:mbedtls_platform_gmtime_r	24	static

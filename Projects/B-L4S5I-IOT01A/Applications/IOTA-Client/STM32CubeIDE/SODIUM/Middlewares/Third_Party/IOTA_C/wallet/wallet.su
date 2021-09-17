@@ -1,0 +1,12 @@
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:234:13:utarray_str_cpy	24	static
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:253:13:utarray_str_dtor	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:18:12:validate_bip44_path	168	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:75:14:wallet_path_from_index	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:88:31:wallet_build_transaction	568	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:232:16:wallet_create	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:252:5:wallet_set_endpoint	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:268:5:wallet_address_by_index	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:285:5:wallet_balance_by_address	96	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:315:5:wallet_balance_by_index	64	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:325:5:wallet_send	136	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/wallet/wallet.c:398:6:wallet_destroy	16	static

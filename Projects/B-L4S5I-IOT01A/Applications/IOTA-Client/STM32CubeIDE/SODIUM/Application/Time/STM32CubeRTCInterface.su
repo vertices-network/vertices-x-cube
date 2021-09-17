@@ -1,0 +1,4 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Time/STM32CubeRTCInterface.c:46:5:TimingSystemSetSystemTime	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Time/STM32CubeRTCInterface.c:95:6:RTC_CalendarShow	48	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Time/STM32CubeRTCInterface.c:118:9:TimingSystemGetSystemTime	48	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Time/STM32CubeRTCInterface.c:154:8:SynchronizationAgentConvertNTPTime2EpochTime	40	static

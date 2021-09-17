@@ -1,0 +1,8 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:518:6:mbedtls_aes_init	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:525:6:mbedtls_aes_free	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:556:5:mbedtls_aes_setkey_enc	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:672:5:mbedtls_aes_setkey_dec	328	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:870:5:mbedtls_internal_aes_encrypt	64	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:938:5:mbedtls_internal_aes_decrypt	64	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:1005:5:mbedtls_aes_crypt_ecb	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/aes.c:1786:5:mbedtls_aes_self_test	424	static

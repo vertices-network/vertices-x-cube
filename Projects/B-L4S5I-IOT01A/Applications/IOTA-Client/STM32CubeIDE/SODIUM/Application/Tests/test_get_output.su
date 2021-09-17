@@ -1,0 +1,4 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_output.c:13:6:test_get_output_	496	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_output.c:28:6:test_deser_response_error	248	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_output.c:46:6:test_deser_response	256	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_output.c:74:5:test_get_output	8	static

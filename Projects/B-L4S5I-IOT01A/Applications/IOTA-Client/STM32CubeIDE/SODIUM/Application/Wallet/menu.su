@@ -1,0 +1,5 @@
+../../Inc/Tests/test.h:60:13:setUp	4	static
+../../Inc/Tests/test.h:61:13:tearDown	4	static
+../../Inc/Tests/test.h:75:12:test_core	4	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Wallet/menu.c:41:6:main_menu	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Wallet/menu.c:98:6:test_menu	24	static

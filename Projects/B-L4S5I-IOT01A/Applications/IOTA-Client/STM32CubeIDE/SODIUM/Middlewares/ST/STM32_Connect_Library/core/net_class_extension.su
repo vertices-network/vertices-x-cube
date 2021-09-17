@@ -1,0 +1,7 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:25:9:net_wifi_scan	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:53:9:net_wifi_get_scan_results	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:68:9:net_wifi_set_credentials	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:74:9:net_wifi_set_powersave	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:99:9:net_wifi_set_param	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:116:9:net_cellular_set_credentials	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/core/net_class_extension.c:143:9:net_cellular_get_radio_results	24	static

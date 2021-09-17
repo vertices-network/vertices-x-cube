@@ -1,0 +1,6 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/utils/slip10.c:27:13:master_key_generation	128	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/utils/slip10.c:47:13:private_ckd	72	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/utils/slip10.c:67:13:child_key_derivation	80	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/utils/slip10.c:84:5:slip10_parse_path	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/utils/slip10.c:142:5:slip10_key_from_path	160	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/utils/slip10.c:168:5:slip10_public_key	128	static

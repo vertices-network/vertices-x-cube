@@ -1,0 +1,12 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:99:5:http_req_create	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:165:6:http_req_destroy	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:170:12:http_connect	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:214:5:http_open	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:279:5:http_close	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:310:6:http_is_open	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:331:5:http_url_parse	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:407:14:response_realloc	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:412:13:response_body	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:422:13:response_header	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:425:13:response_code	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/network/http_lib.c:452:5:http_read	1152	static

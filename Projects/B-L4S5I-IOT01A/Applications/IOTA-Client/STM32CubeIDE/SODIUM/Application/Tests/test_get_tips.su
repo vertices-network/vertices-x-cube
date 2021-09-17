@@ -1,0 +1,6 @@
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:234:13:utarray_str_cpy	24	static
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:253:13:utarray_str_dtor	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_tips.c:12:6:test_get_tips_	272	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_tips.c:23:6:test_deser_get_tips	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_tips.c:46:6:test_deser_tips_err	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Tests/test_get_tips.c:59:5:test_get_tips	8	static

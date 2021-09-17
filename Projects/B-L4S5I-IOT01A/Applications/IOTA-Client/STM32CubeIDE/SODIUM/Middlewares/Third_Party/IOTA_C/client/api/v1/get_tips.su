@@ -1,0 +1,9 @@
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:234:13:utarray_str_cpy	24	static
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:253:13:utarray_str_dtor	24	static
+../../../../../../Middlewares/Third_Party/IOTA_C/core/utils/iota_str.h:78:19:iota_str_append	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_tips.c:11:5:get_tips	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_tips.c:72:13:res_tips_new	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_tips.c:83:6:res_tips_free	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_tips.c:96:5:deser_get_tips	48	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_tips.c:131:8:get_tips_id_count	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_tips.c:140:7:get_tips_id	16	static

@@ -1,0 +1,12 @@
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:234:13:utarray_str_cpy	24	static
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:253:13:utarray_str_dtor	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:8:14:json_get_string	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:31:14:json_get_byte_buf_str	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:55:14:json_get_boolean	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:78:14:json_string_array_to_utarray	48	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:110:14:utarray_to_json_string_array	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:134:14:json_get_int	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:157:14:json_get_uint8	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:185:14:json_get_uint16	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:213:14:json_get_uint32	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/json_utils.c:241:14:json_get_uint64	32	static

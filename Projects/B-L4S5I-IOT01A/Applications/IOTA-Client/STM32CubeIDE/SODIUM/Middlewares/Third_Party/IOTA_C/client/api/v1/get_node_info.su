@@ -1,0 +1,9 @@
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:234:13:utarray_str_cpy	24	static
+../../../../../../Middlewares/Third_Party/uthash/utarray.h:253:13:utarray_str_dtor	24	static
+../../../../../../Middlewares/Third_Party/IOTA_C/core/utils/iota_str.h:78:19:iota_str_append	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_node_info.c:12:18:res_node_info_new	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_node_info.c:24:6:res_node_info_free	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_node_info.c:40:7:get_node_features_at	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_node_info.c:55:8:get_node_features_num	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_node_info.c:64:5:get_node_info	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/client/api/v1/get_node_info.c:138:5:deser_node_info	40	static

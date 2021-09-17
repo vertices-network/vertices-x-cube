@@ -1,0 +1,9 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:81:6:mbedtls_sha256_init	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:88:6:mbedtls_sha256_free	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:96:6:mbedtls_sha256_clone	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:108:5:mbedtls_sha256_starts_ret	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:201:5:mbedtls_internal_sha256_process	320	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:274:5:mbedtls_sha256_update_ret	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:336:5:mbedtls_sha256_finish_ret	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:412:5:mbedtls_sha256_ret	136	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/sha256.c:505:5:mbedtls_sha256_self_test	184	static

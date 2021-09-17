@@ -1,0 +1,8 @@
+../../../../../../Middlewares/Third_Party/IOTA_C/core/types.h:24:20:dump_hex	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:12:13:utxo_outputs_new	4	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:16:13:utxo_outputs_find_by_addr	48	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:22:10:utxo_outputs_count	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:26:6:utxo_outputs_free	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:34:5:utxo_outputs_add	88	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:63:8:utxo_outputs_serialization	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/core/models/outputs/outputs.c:95:6:utxo_outputs_print	24	static

@@ -1,0 +1,8 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:90:14:gcm_ctx_alloc	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:100:13:gcm_ctx_free	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:128:12:aes_crypt_ecb_wrap	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:199:12:aes_setkey_dec_wrap	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:205:12:aes_setkey_enc_wrap	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:211:15:aes_ctx_alloc	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:223:13:aes_ctx_free	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/mbedTLS/library/cipher_wrap.c:516:12:gcm_aes_setkey_wrap	24	static

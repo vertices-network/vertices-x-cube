@@ -1,0 +1,4 @@
+../../../../../../Middlewares/Third_Party/IOTA_C/core/types.h:37:20:dump_hex_str	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Wallet/test_wallet.c:36:6:test_wallet_api	64	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Wallet/test_wallet.c:74:6:test_wallet_api_with_node	144	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/Wallet/test_wallet.c:112:5:test_wallet	8	static

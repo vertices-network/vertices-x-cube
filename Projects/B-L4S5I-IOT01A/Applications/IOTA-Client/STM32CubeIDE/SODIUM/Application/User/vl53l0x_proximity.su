@@ -1,0 +1,4 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/vl53l0x_proximity.c:52:6:VL53L0X_PROXIMITY_Init	112	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/vl53l0x_proximity.c:91:10:VL53L0X_PROXIMITY_GetDistance	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/vl53l0x_proximity.c:103:6:VL53L0X_PROXIMITY_MspInit	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Projects/B-L4S5I-IOT01A/Applications/IOTA-Client/Src/vl53l0x_proximity.c:122:6:SetupSingleShot	48	static

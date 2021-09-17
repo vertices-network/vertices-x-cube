@@ -1,0 +1,6 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/crypto/iota_crypto.c:19:6:iota_crypto_randombytes	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/crypto/iota_crypto.c:24:6:iota_crypto_keypair	16	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/crypto/iota_crypto.c:45:5:iota_crypto_sign	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/crypto/iota_crypto.c:77:5:iota_crypto_hmacsha256	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/crypto/iota_crypto.c:99:5:iota_crypto_hmacsha512	40	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/Third_Party/IOTA_C/crypto/iota_crypto.c:121:5:iota_blake2b_sum	48	static

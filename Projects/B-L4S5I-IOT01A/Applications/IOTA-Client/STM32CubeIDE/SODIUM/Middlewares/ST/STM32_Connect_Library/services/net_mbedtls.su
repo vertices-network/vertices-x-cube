@@ -1,0 +1,12 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:74:6:net_tls_init	4	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:81:6:net_tls_destroy	4	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:89:6:net_mbedtls_check_tlsdata	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:111:13:DebugPrint	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:129:6:net_mbedtls_set_read_timeout	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:138:9:net_mbedtls_start	560	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:335:9:net_mbedtls_sock_recv	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:367:9:net_mbedtls_sock_send	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:391:9:net_mbedtls_stop	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:409:13:mbedtls_free_resource	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:426:12:mbedtls_net_recv	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Middlewares/ST/STM32_Connect_Library/services/net_mbedtls.c:478:12:mbedtls_net_send	48	static

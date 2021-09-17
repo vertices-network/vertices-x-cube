@@ -1,0 +1,11 @@
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:87:9:BSP_ENV_SENSOR_Init	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:135:9:BSP_ENV_SENSOR_DeInit	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:168:9:BSP_ENV_SENSOR_GetCapabilities	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:197:9:BSP_ENV_SENSOR_ReadID	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:229:9:BSP_ENV_SENSOR_Enable	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:271:9:BSP_ENV_SENSOR_Disable	24	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:314:9:BSP_ENV_SENSOR_GetOutputDataRate	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:357:9:BSP_ENV_SENSOR_SetOutputDataRate	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:400:9:BSP_ENV_SENSOR_GetValue	32	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:446:16:HTS221_Probe	56	static
+/Users/cyril/Documents/work/SDK/STM32CubeExpansion_IOTA1_V2.0.0/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_env_sensors.c:504:16:LPS22HB_Probe	56	static
