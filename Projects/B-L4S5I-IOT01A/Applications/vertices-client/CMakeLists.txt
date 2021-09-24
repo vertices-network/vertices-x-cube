@@ -262,7 +262,6 @@ add_link_options(-mcpu=cortex-m4 -mthumb -mfloat-abi=hard)
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
 add_link_options(-static -Xlinker)
 add_link_options(-T ${LINKER_SCRIPT})
-add_link_options(--specs=nano.specs)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR} ${SDK_ROOT}/Middlewares/Third_Party/libsodium/library/STM32CubeIDE/)
 
 link_libraries(
