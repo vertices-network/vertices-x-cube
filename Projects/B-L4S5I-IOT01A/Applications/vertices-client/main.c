@@ -17,6 +17,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include <vertices_client.h>
 #include "main.h"
 #include "cmsis_os.h"
 #include "vertices.h"
@@ -27,7 +28,6 @@ RNG_HandleTypeDef hrng;
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private defines -----------------------------------------------------------*/
-#define IOTA_THREAD_STACK_SIZE              (1536U)
 #define MAIN_THREAD_STACK_SIZE              (2048U)
 
 /* Private macros ------------------------------------------------------------*/
@@ -501,19 +501,21 @@ vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 static void
 MainThread(void const *argument)
 {
-    osThreadId IOTAWalletThreadId = NULL;
+    osThreadId VerticesWalletThreadId = NULL;
     UNUSED(argument);
-//  printf("\r\n Starting Main Thread...\n");
+    printf("\r\n Starting Main Thread...\n");
 
     platform_init();
 
-
-
     /* Start application task */
-//  osThreadDef(IOTA_WALLET, &iota_wallet_run, osPriorityNormal, 0, IOTA_THREAD_STACK_SIZE);
-//  IOTAWalletThreadId = osThreadCreate (osThread(IOTA_WALLET), NULL);
+    osThreadDef(VERTICES_WALLET,
+                &vertices_wallet_run,
+                osPriorityNormal,
+                0,
+                2048);
+    VerticesWalletThreadId = osThreadCreate(osThread(VERTICES_WALLET), NULL);
 
-    if (IOTAWalletThreadId == NULL)
+    if (VerticesWalletThreadId == NULL)
     {
         Error_Handler();
     }

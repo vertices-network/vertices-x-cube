@@ -186,6 +186,10 @@ set(SRC_FILES
         Time/timedate.c
         Time/timingSystem.c
 
+        vertices_client.c
+        http_stm.c
+
+        hardfault.c
         syscalls.c
         sysmem.c
         system_stm32l4xx.c
@@ -233,7 +237,7 @@ set_source_files_properties(startup_stm32l4s5aiix.s PROPERTIES COMPILE_FLAGS "-x
 include_directories(${INC_DIRS})
 set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4S5VITX_FLASH.ld)
 
-add_compile_options(-DUSE_HAL_DRIVER -DUSE_WIFI -D__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__ -DMBEDTLS_CONFIG_FILE=<mbedtls_config.h> -DSTM32L4S5xx -DCRYPTO_USE_SODIUM)
+add_compile_options(-DUSE_HAL_DRIVER -DUSE_WIFI -D__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__ -DMBEDTLS_CONFIG_FILE=<mbedtls_config.h> -DSTM32L4S5xx -DCRYPTO_USE_SODIUM -D__FPU_PRESENT=1)
 add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 add_compile_options(-mcpu=cortex-m4 -mthumb)
 add_compile_options(-ffunction-sections)
@@ -254,6 +258,9 @@ link_libraries(
 
 add_executable(${PROJECT_NAME} ${SRC_FILES} ${LINKER_SCRIPT})
 add_dependencies(${PROJECT_NAME} vertices)
+
+target_compile_options(vertices PRIVATE -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16)
+target_link_options(vertices PRIVATE -mcpu=cortex-m4 -mthumb -mfloat-abi=hard)
 target_link_libraries(${PROJECT_NAME} PRIVATE vertices)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX .elf)
