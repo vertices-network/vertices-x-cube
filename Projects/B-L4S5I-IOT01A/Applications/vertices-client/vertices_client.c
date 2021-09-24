@@ -47,6 +47,10 @@ static account_t alice_account = {.private_key = {0}, .vtc_account = NULL};
 // Bob is receiving the money 😎
 static account_t bob_account = {.private_key = {0}, .vtc_account = NULL};
 
+#ifndef AMOUNT_SENT
+#define AMOUNT_SENT 100
+#endif
+
 static ret_code_t
 vertices_evt_handler(vtc_evt_t *evt)
 {
@@ -73,7 +77,7 @@ load_existing_account()
     ret_code_t err_code = vertices_account_new_from_b32(public_b32, &alice_account.vtc_account);
     VTC_ASSERT(err_code);
 
-    printf("💳 Alice's account %s", alice_account.vtc_account->public_b32);
+    printf("💳 Alice's account %s\r\n", alice_account.vtc_account->public_b32);
 }
 
 static vertex_t m_vertex = {
@@ -115,6 +119,39 @@ vertices_wallet_run(void const *arg)
            version.patch);
 
     load_existing_account();
+
+    // we want at least 1.001 Algo available
+    while (alice_account.vtc_account->amount < 1001000)
+    {
+        printf("🙄 %lu Algos available on account. "
+               "It's too low to pass a transaction, consider adding Algos\r\n",
+               (int32_t) alice_account.vtc_account->amount / 1.e6);
+        printf("👉 Go to https://bank.testnet.algorand.network/, "
+               "dispense Algos to: %s\r\n",
+               alice_account.vtc_account->public_b32);
+        printf("😎 Then wait for a few seconds for transaction to pass...\r\n");
+        printf("⏳ Retrying in 1 minute\r\n");
+
+        osDelay(60000);
+
+        vertices_account_update(alice_account.vtc_account);
+    }
+
+    printf("🤑 %lu.%lu Algos on Alice's account (%s)\r\n",
+           (int32_t) alice_account.vtc_account->amount / 1000000,
+           (int32_t) alice_account.vtc_account->amount % 1000000,
+           alice_account.vtc_account->public_b32);
+
+    // create account from b32 address
+    //      Note: creating a receiver account is not mandatory to send money to the account
+    //      but we can use it to load the public key from the account address
+    err_code = vertices_account_new_from_b32(ACCOUNT_RECEIVER, &bob_account.vtc_account);
+    VTC_ASSERT(err_code);
+
+    // send assets from Alice's account to Bob's account
+    char notes[64] = {0};
+    size_t len = sprintf(notes, "Alice sent %lu Algos to Bob", (uint32_t) AMOUNT_SENT / 1.e6);
+    VTC_ASSERT_BOOL(len < 64);
 
     while (1)
     {
