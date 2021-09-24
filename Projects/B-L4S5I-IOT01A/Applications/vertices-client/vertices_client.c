@@ -95,10 +95,6 @@ vertices_evt_handler(vtc_evt_t *evt)
                                       &b64_signature_len,
                                       tx->signature,
                                       sizeof(tx->signature));
-//                b64_encode((const char *) tx->signature,
-//                           sizeof(tx->signature),
-//                           b64_signature,
-//                           &b64_signature_len);
                 printf("Signature %s (%u bytes)\r\n", b64_signature, b64_signature_len);
 
                 // let's push the new state
@@ -153,7 +149,7 @@ static vertex_t m_vertex = {
 _Noreturn void
 vertices_wallet_run(void const *arg)
 {
-    printf("Vertices wallet, let's go!\r\n");
+    printf("Vertices Wallet example task\r\n");
 
     // create new vertex
     ret_code_t err_code = vertices_new(&m_vertex);
@@ -218,6 +214,33 @@ vertices_wallet_run(void const *arg)
                                      (char *) bob_account.vtc_account->public_b32,
                                      AMOUNT_SENT,
                                      notes);
+    VTC_ASSERT(err_code);
+
+    // get application information (global states)
+    printf("Application %u, global states\r\n", APP_ID);
+
+    app_values_t app_kv = {0};
+    err_code = vertices_application_get(APP_ID, &app_kv);
+    VTC_ASSERT(err_code);
+    for (uint32_t i = 0; i < app_kv.count; ++i)
+    {
+        if (app_kv.values[i].type == VALUE_TYPE_INTEGER)
+        {
+            printf("%s: %llu\r\n", app_kv.values[i].name, app_kv.values[i].value_uint);
+        }
+        else if (app_kv.values[i].type == VALUE_TYPE_BYTESLICE)
+        {
+            printf("%s: %s\r\n", app_kv.values[i].name, app_kv.values[i].value_slice);
+        }
+    }
+
+    // send application call
+    app_values_t kv = {0};
+    kv.count = 1;
+    kv.values[0].type = VALUE_TYPE_INTEGER;
+    kv.values[0].value_uint = 32;
+
+    err_code = vertices_transaction_app_call(alice_account.vtc_account, APP_ID, &kv);
     VTC_ASSERT(err_code);
 
     while (1)
