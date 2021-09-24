@@ -1,4 +1,4 @@
-set(PROJECT_NAME vertices-STM32Cube)
+set(PROJECT_NAME vertices-example)
 project(${PROJECT_NAME} C ASM)
 
 
