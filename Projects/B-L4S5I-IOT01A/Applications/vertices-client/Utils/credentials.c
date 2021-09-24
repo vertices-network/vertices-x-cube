@@ -38,13 +38,13 @@ static const char DEFAULT_PSK[] = CONFIG_WIFI_PSK;
 int32_t
 set_network_credentials(net_if_handle_t *pnetif)
 {
-    net_wifi_credentials_t wifi_cred;
+    static net_wifi_credentials_t wifi_cred = {0};
 
     printf("\n*** WIFI connection ***\n\n");
 
-    wifi_cred.psk = DEFAULT_SSID;
+    wifi_cred.ssid = DEFAULT_SSID;
+    wifi_cred.psk = DEFAULT_PSK;
     wifi_cred.security_mode = 3;
-    wifi_cred.ssid = DEFAULT_PSK;
 
     if (net_wifi_set_credentials(pnetif, &wifi_cred) != NET_OK)
     {
