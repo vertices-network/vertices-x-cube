@@ -22,4 +22,4 @@ COPY environment.yml /home/dev/environment.yml
 RUN conda env create -f /home/dev/environment.yml
 
 ## use the new environment without activating with Conda
-ENV PATH $PATH:/root/miniconda3/envs/worldcoin/bin/
+ENV PATH $PATH:/root/miniconda3/envs/vertices/bin/
