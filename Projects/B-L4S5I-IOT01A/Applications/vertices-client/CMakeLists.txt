@@ -173,7 +173,7 @@ set(SRC_FILES
         Utils/cloud.c
         Utils/iot_flash_config.c
         Utils/sensors_data.c
-        Utils/set_credentials.c
+        Utils/credentials.c
         flash_l4.c
         main.c
         mbedtls_entropy.c
@@ -237,12 +237,17 @@ set_source_files_properties(startup_stm32l4s5aiix.s PROPERTIES COMPILE_FLAGS "-x
 include_directories(${INC_DIRS})
 set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/STM32L4S5VITX_FLASH.ld)
 
+# Use custom .config.cmake to set application-specific variables
+# such as Wi-Fi credentials
+if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.config.cmake)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/.config.cmake)
+endif ()
+
 add_compile_options(-DUSE_HAL_DRIVER -DUSE_WIFI -D__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__ -DMBEDTLS_CONFIG_FILE=<mbedtls_config.h> -DSTM32L4S5xx -DCRYPTO_USE_SODIUM -D__FPU_PRESENT=1)
 add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 add_compile_options(-mcpu=cortex-m4 -mthumb)
 add_compile_options(-ffunction-sections)
 add_compile_options(-Os -Wall -Wno-strict-aliasing -Wno-format -fstack-usage)
-
 
 add_link_options(-mcpu=cortex-m4 -mthumb -mfloat-abi=hard)
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)

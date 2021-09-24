@@ -1,0 +1,3 @@
+
+message(STATUS "Setting Wi-Fi credentials")
+add_compile_options(-DCONFIG_WIFI_SSID="" -DCONFIG_WIFI_PSK="")
