@@ -6,7 +6,7 @@
 #include <http.h>
 #include "vertices_http.h"
 
-#define HTTP_READ_BUFFER_SIZE 1024
+#define HTTP_READ_WRITE_BUFFER_SIZE 1024
 
 #define SOCKET_INVALID_VALUE (-1)
 static int m_socket = SOCKET_INVALID_VALUE;
@@ -184,7 +184,7 @@ http_get(const provider_info_t *provider,
         return VTC_ERROR_INVALID_STATE;
     }
 
-    char request_str[128] = {0};
+    char request_str[HTTP_READ_WRITE_BUFFER_SIZE] = {0};
 
     if (m_hostname[0] == 0)
     {
@@ -214,7 +214,7 @@ http_get(const provider_info_t *provider,
     http_parser_init(&rt, responseFuncs, response_code);
 
     bool needmore = true;
-    uint8_t buffer[HTTP_READ_BUFFER_SIZE];
+    uint8_t buffer[HTTP_READ_WRITE_BUFFER_SIZE];
     while (needmore)
     {
         const char *data = (char *) buffer;
