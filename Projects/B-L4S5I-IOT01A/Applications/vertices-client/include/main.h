@@ -39,7 +39,6 @@
 #include <stdbool.h>
 #include "timedate.h"
 #include "flash.h"
-#include "iot_flash_config.h"
 #include "msg.h"
 #include "net_connect.h"
 #include "cloud.h"
@@ -69,8 +68,6 @@ void    SPI3_IRQHandler(void);
 extern  SPI_HandleTypeDef hspi;
 extern  RNG_HandleTypeDef hrng;
 extern  RTC_HandleTypeDef hrtc;
-
-extern const user_config_t *lUserConfigPtr;
 
 #ifdef __cplusplus
 }

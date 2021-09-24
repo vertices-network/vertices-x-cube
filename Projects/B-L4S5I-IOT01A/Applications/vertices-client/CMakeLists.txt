@@ -171,7 +171,6 @@ set(SRC_FILES
         ${SDK_ROOT}/Drivers/BSP/B-L475E-IOT01/stm32l475e_iot01_motion_sensors.c
 
         Utils/cloud.c
-        Utils/iot_flash_config.c
         Utils/sensors_data.c
         Utils/credentials.c
         flash_l4.c
