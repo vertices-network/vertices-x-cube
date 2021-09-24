@@ -139,7 +139,7 @@ platform_init(void)
     int res = init_sensors();
     VTC_ASSERT(res);
 
-    return 0;
+    return NET_OK;
 }
 
 /**

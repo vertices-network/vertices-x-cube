@@ -505,7 +505,13 @@ MainThread(void const *argument)
     UNUSED(argument);
     printf("\r\n Starting Main Thread...\n");
 
-    platform_init();
+    int ret = platform_init();
+    if (ret != NET_OK)
+    {
+        printf("Error connecting\r\n");
+
+        while(1);
+    }
 
     /* Start application task */
     osThreadDef(VERTICES_WALLET,
