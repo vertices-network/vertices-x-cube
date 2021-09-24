@@ -211,18 +211,6 @@ set(INC_DIRS
         ${SDK_ROOT}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
         ${SDK_ROOT}/Middlewares/Third_Party/FreeRTOS/Source/include
         ${SDK_ROOT}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/client
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/client/api
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/client/api/v1
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/client/network
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/core
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/core/models
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/core/models/inputs
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/core/models/outputs
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/core/models/payloads
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/core/utils
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/crypto
-        ${SDK_ROOT}/Middlewares/Third_Party/IOTA_C/wallet
         ${SDK_ROOT}/Middlewares/Third_Party/libsodium/include
         ${SDK_ROOT}/Middlewares/Third_Party/mbedTLS/include
         ${SDK_ROOT}/Middlewares/Third_Party/tinyhttp
@@ -242,15 +230,19 @@ if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.config.cmake)
     include(${CMAKE_CURRENT_SOURCE_DIR}/.config.cmake)
 endif ()
 
+# Create object file from keys so that we can link them into the final binary
 set(KEYS_OBJ keys.o)
 add_custom_target(load_secret
         COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/private_key.bin ${CMAKE_CURRENT_BINARY_DIR}/private_key.bin
         COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/public_b32.txt ${CMAKE_CURRENT_BINARY_DIR}/public_b32.txt
         COMMAND ${TOOLCHAIN_PREFIX}ld -r -b binary -o ${KEYS_OBJ} private_key.bin public_b32.txt
-#        COMMAND ${TOOLCHAIN_PREFIX}ld -r -b binary -o public.o private_key.bin
         DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/private_key.bin ${CMAKE_CURRENT_SOURCE_DIR}/public_b32.txt
         BYPRODUCTS ${KEYS_OBJ}
         COMMENT "Encapsulating keys")
+
+# get full path to root CMake so that it can be removed from the log
+string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
+add_definitions("-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE}")
 
 add_compile_options(-DUSE_HAL_DRIVER -DUSE_WIFI -D__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__ -DMBEDTLS_CONFIG_FILE=<mbedtls_config.h> -DSTM32L4S5xx -DCRYPTO_USE_SODIUM -D__FPU_PRESENT=1)
 add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
@@ -273,7 +265,7 @@ link_libraries(
 add_executable(${PROJECT_NAME} ${SRC_FILES} ${LINKER_SCRIPT} ${KEYS_OBJ})
 add_dependencies(${PROJECT_NAME} vertices load_secret)
 
-target_compile_options(vertices PRIVATE -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16)
+target_compile_options(vertices PRIVATE -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 target_link_options(vertices PRIVATE -mcpu=cortex-m4 -mthumb -mfloat-abi=hard)
 target_link_libraries(${PROJECT_NAME} PRIVATE vertices)
 

@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @file    set_credentials.c
-  * @author  MCD Application Team
+  * @file    credentials.c
+  * @author  Based on MCD Application Team
   * @brief   set the device connection credentials
   ******************************************************************************
   * @attention
@@ -20,7 +20,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 #include <credentials.h>
-#include "main.h"
+#include <vertices_log.h>
 #include "net_connect.h"
 
 static const char DEFAULT_SSID[] = CONFIG_WIFI_SSID;
@@ -40,7 +40,7 @@ set_network_credentials(net_if_handle_t *pnetif)
 {
     static net_wifi_credentials_t wifi_cred = {0};
 
-    printf("\n*** WIFI connection ***\n\n");
+    LOG_INFO("*** WIFI connection ***");
 
     wifi_cred.ssid = DEFAULT_SSID;
     wifi_cred.psk = DEFAULT_PSK;
@@ -48,7 +48,7 @@ set_network_credentials(net_if_handle_t *pnetif)
 
     if (net_wifi_set_credentials(pnetif, &wifi_cred) != NET_OK)
     {
-        msg_error("Can not set the Wi-Fi credentials\n");
+        LOG_ERROR("Can not set the Wi-Fi credentials");
         return NET_ERROR_FRAMEWORK;
     }
     return NET_OK;

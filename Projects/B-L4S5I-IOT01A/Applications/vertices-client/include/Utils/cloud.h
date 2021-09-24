@@ -37,10 +37,6 @@ extern "C" {
  * @{
  */
 
-/** @defgroup IOTA_Client IOTA_Client
- * @{
- */
-
 /** @defgroup CLOUD Cloud
  * @{
  */

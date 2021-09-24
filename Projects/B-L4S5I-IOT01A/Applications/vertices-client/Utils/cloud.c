@@ -19,12 +19,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
 #include <vertices_errors.h>
 #include <credentials.h>
-#include "main.h"
+#include <vertices_log.h>
 #include "net_connect.h"
 #include "timedate.h"
 #include "cloud.h"
@@ -60,9 +58,9 @@ dialog_ask(char *s)
     char console_yn;
     do
     {
-        printf("%s", s);
+        LOG_INFO("%s", s);
         console_yn = getchar();
-        printf("\b");
+        LOG_INFO("\b");
     }
     while ((console_yn != 'y') && (console_yn != 'n') && (console_yn != '\n'));
     if (console_yn == 'y')
@@ -84,27 +82,27 @@ platform_init(void)
     stack_measure_prologue();
 #endif
 
-    printf("\n");
-    printf("*************************************************************\n");
-    printf("***   STM32 IoT Discovery kit for STM32L4S5VI MCU\n");
-    printf("***   Vertices Client\n");
-//  printf("***   FW version: %d.%d.%d - %s\n",
+    LOG_INFO("");
+    LOG_INFO("*************************************************************");
+    LOG_INFO("***   STM32 IoT Discovery kit for STM32L4S5VI MCU");
+    LOG_INFO("***   Vertices Client");
+//  LOG_INFO("***   FW version: %d.%d.%d - %s",
 //         FW_VERSION_MAJOR, FW_VERSION_MINOR, FW_VERSION_PATCH, FW_VERSION_DATE);
-    printf("*************************************************************\n");
+    LOG_INFO("*************************************************************");
 
-    printf("\n*** Board personalization ***\n\n");
+    LOG_INFO("*** Board personalization ***");
     /* Network initialization */
 
     if (net_if_init(&netif, device_driver_ptr, &net_handler) != NET_OK)
     {
-        msg_error("Can not set-up the network interface structure\n");
+        LOG_ERROR("Can not set-up the network interface structure");
         return NET_ERROR_FRAMEWORK;
     }
     else
     {
         if (net_if_wait_state(&netif, NET_STATE_INITIALIZED, STATE_TRANSITION_TIMEOUT) != NET_OK)
         {
-            msg_error("The network interface can not be initialized\n");
+            LOG_ERROR("The network interface can not be initialized");
             return NET_ERROR_FRAMEWORK;
         }
     }
@@ -113,13 +111,13 @@ platform_init(void)
 
     if (net_if_start(&netif) != NET_OK)
     {
-        msg_error("The network interface can not be started\n");
+        LOG_ERROR("The network interface can not be started");
         return NET_ERROR_FRAMEWORK;
     }
 
     if (net_if_connect(&netif) != NET_OK)
     {
-        msg_error("Unable to connect netif\n");
+        LOG_ERROR("Unable to connect netif");
         return -1;
     }
     else
@@ -129,7 +127,7 @@ platform_init(void)
 
     /* End of network initialization */
 
-    msg_info("Setting the RTC from the network time.\n");
+    LOG_INFO("Setting the RTC from the network time.");
     int err_code = setRTCTimeDateFromNetwork(true);
     if (err_code != TD_OK)
     {
@@ -150,10 +148,6 @@ platform_init(void)
 void
 platform_deinit()
 {
-    /* Close IOTA Client demonstration */
-    printf("\n*** IOTA Client demonstration ***\n\n");
-    printf("IOTA Client demonstration completed\n");
-
     net_if_deinit(&netif);
 
 #if defined(HEAP_DEBUG) && !defined(HAS_RTOS)
@@ -161,7 +155,7 @@ platform_deinit()
     uint32_t heap_max, heap_current, stack_size;
 
     heap_stat(&heap_max, &heap_current, &stack_size);
-    msg_info("Heap Max allocation 0x%lx (%lu), current allocation 0x%lx (%lu), Stack max size 0x%lx (%lu)\n", heap_max, heap_max, heap_current, heap_current, stack_size, stack_size);
+    LOG_INFO("Heap Max allocation 0x%lx (%lu), current allocation 0x%lx (%lu), Stack max size 0x%lx (%lu)", heap_max, heap_max, heap_current, heap_current, stack_size, stack_size);
 #endif
 }
 
@@ -179,18 +173,18 @@ hnet_notify(void *context,
         net_state_t new_state = (net_state_t) event_id;
         switch (new_state)
         {
-            case NET_STATE_INITIALIZED:printf("- Network Interface initialized: \n");
+            case NET_STATE_INITIALIZED:LOG_INFO("- Network Interface initialized: ");
                 break;
 
-            case NET_STATE_STARTING:printf("- Network Interface starting: \n");
+            case NET_STATE_STARTING:LOG_INFO("- Network Interface starting: ");
                 break;
 
-            case NET_STATE_STARTED:printf("- Network Interface started: \n");
-                printf("   - Device Name : %s. \n", netif->DeviceName);
-                printf("   - Device ID : %s. \n", netif->DeviceID);
-                printf("   - Device Version : %s. \n", netif->DeviceVer);
+            case NET_STATE_STARTED:LOG_INFO("- Network Interface started: ");
+                LOG_INFO("   - Device Name : %s. ", netif->DeviceName);
+                LOG_INFO("   - Device ID : %s. ", netif->DeviceID);
+                LOG_INFO("   - Device Version : %s. ", netif->DeviceVer);
 #ifndef STM32L496xx
-                printf("   - MAC address: %02X:%02X:%02X:%02X:%02X:%02X. \n",
+                LOG_INFO("   - MAC address: %02X:%02X:%02X:%02X:%02X:%02X. ",
                        netif->macaddr.mac[0],
                        netif->macaddr.mac[1],
                        netif->macaddr.mac[2],
@@ -200,26 +194,26 @@ hnet_notify(void *context,
 #endif
                 break;
 
-            case NET_STATE_CONNECTING:printf("- Network Interface connecting: \n");
+            case NET_STATE_CONNECTING:LOG_INFO("- Network Interface connecting: ");
                 break;
 
-            case NET_STATE_CONNECTED:printf("- Network Interface connected: \n");
-                printf("   - IP address :  %s. \n", net_ntoa(&netif->ipaddr));
+            case NET_STATE_CONNECTED:LOG_INFO("- Network Interface connected: ");
+                LOG_INFO("   - IP address :  %s. ", net_ntoa(&netif->ipaddr));
                 break;
 
-            case NET_STATE_DISCONNECTING:printf("- Network Interface disconnecting\n");
+            case NET_STATE_DISCONNECTING:LOG_INFO("- Network Interface disconnecting");
                 break;
 
-            case NET_STATE_DISCONNECTED:printf("- Network Interface disconnected\n");
+            case NET_STATE_DISCONNECTED:LOG_INFO("- Network Interface disconnected");
                 break;
 
-            case NET_STATE_STOPPING:printf("- Network Interface stopping\n");
+            case NET_STATE_STOPPING:LOG_INFO("- Network Interface stopping");
                 break;
 
-            case NET_STATE_STOPPED:printf("- Network Interface stopped\n");
+            case NET_STATE_STOPPED:LOG_INFO("- Network Interface stopped");
                 break;
 
-            case NET_STATE_DEINITIALIZED:printf("- Network Interface de-initialized\n");
+            case NET_STATE_DEINITIALIZED:LOG_INFO("- Network Interface de-initialized");
                 break;
 
             default:break;

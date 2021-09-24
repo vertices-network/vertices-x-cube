@@ -9,6 +9,7 @@
 #include "vertices_client.h"
 #include <sodium.h>
 #include <mbedtls/base64.h>
+#include <vertices_log.h>
 
 static ret_code_t
 vertices_evt_handler(vtc_evt_t *evt);
@@ -66,7 +67,7 @@ vertices_evt_handler(vtc_evt_t *evt)
             err_code = vertices_event_tx_get(evt->bufid, &tx);
             if (err_code == VTC_SUCCESS)
             {
-                printf("About to sign tx: data length %u\r\n", tx->payload_body_length);
+                LOG_INFO("About to sign tx: data length %u", tx->payload_body_length);
 
                 // libsodium wants to have private and public keys concatenated
                 unsigned char keys[crypto_sign_ed25519_SECRETKEYBYTES] = {0};
@@ -95,7 +96,7 @@ vertices_evt_handler(vtc_evt_t *evt)
                                       &b64_signature_len,
                                       tx->signature,
                                       sizeof(tx->signature));
-                printf("Signature %s (%u bytes)\r\n", b64_signature, b64_signature_len);
+                LOG_INFO("Signature %s (%u bytes)", b64_signature, b64_signature_len);
 
                 // let's push the new state
                 evt->type = VTC_EVT_TX_SENDING;
@@ -112,7 +113,7 @@ vertices_evt_handler(vtc_evt_t *evt)
 
         default:
         {
-            printf("Unhandled event: %u\r\n", evt->type);
+            LOG_INFO("Unhandled event: %u", evt->type);
         }
             break;
     }
@@ -135,21 +136,21 @@ load_existing_account()
     ret_code_t err_code = vertices_account_new_from_b32(public_b32, &alice_account.vtc_account);
     VTC_ASSERT(err_code);
 
-    printf("💳 Alice's account %s\r\n", alice_account.vtc_account->public_b32);
+    LOG_INFO("💳 Alice's account %s", alice_account.vtc_account->public_b32);
 }
 
 static vertex_t m_vertex = {
     .provider = &providers,
     .vertices_evt_handler = vertices_evt_handler};
 /**
-  * @brief  IOTA client task
+  * @brief  Vertices client task
   * @param  arg Task arg
   * @retval None
   */
 _Noreturn void
 vertices_wallet_run(void const *arg)
 {
-    printf("Vertices Wallet example task\r\n");
+    LOG_INFO("Vertices Wallet example task");
 
     // create new vertex
     ret_code_t err_code = vertices_new(&m_vertex);
@@ -163,14 +164,14 @@ vertices_wallet_run(void const *arg)
     err_code = vertices_version(&version);
     if (err_code == VTC_ERROR_OFFLINE)
     {
-        printf("Version might not be accurate: old value is being used\r\n");
+        LOG_INFO("Version might not be accurate: old value is being used");
     }
     else
     {
         VTC_ASSERT(err_code);
     }
 
-    printf("🏎 Running on %s v.%u.%u.%u\r\n",
+    LOG_INFO("🏎 Running on %s v.%u.%u.%u",
            version.network,
            version.major,
            version.minor,
@@ -181,21 +182,21 @@ vertices_wallet_run(void const *arg)
     // we want at least 1.001 Algo available
     while (alice_account.vtc_account->amount < 1001000)
     {
-        printf("🙄 %lu Algos available on account. "
-               "It's too low to pass a transaction, consider adding Algos\r\n",
+        LOG_INFO("🙄 %lu Algos available on account. "
+               "It's too low to pass a transaction, consider adding Algos",
                (int32_t) alice_account.vtc_account->amount / 1.e6);
-        printf("👉 Go to https://bank.testnet.algorand.network/, "
-               "dispense Algos to: %s\r\n",
+        LOG_INFO("👉 Go to https://bank.testnet.algorand.network/, "
+               "dispense Algos to: %s",
                alice_account.vtc_account->public_b32);
-        printf("😎 Then wait for a few seconds for transaction to pass...\r\n");
-        printf("⏳ Retrying in 1 minute\r\n");
+        LOG_INFO("😎 Then wait for a few seconds for transaction to pass...");
+        LOG_INFO("⏳ Retrying in 1 minute");
 
         osDelay(60000);
 
         vertices_account_update(alice_account.vtc_account);
     }
 
-    printf("🤑 %lu.%lu Algos on Alice's account (%s)\r\n",
+    LOG_INFO("🤑 %lu.%lu Algos on Alice's account (%s)",
            (int32_t) alice_account.vtc_account->amount / 1000000,
            (int32_t) alice_account.vtc_account->amount % 1000000,
            alice_account.vtc_account->public_b32);
@@ -217,7 +218,7 @@ vertices_wallet_run(void const *arg)
     VTC_ASSERT(err_code);
 
     // get application information (global states)
-    printf("Application %u, global states\r\n", APP_ID);
+    LOG_INFO("Application %u, global states", APP_ID);
 
     app_values_t app_kv = {0};
     err_code = vertices_application_get(APP_ID, &app_kv);
@@ -226,11 +227,11 @@ vertices_wallet_run(void const *arg)
     {
         if (app_kv.values[i].type == VALUE_TYPE_INTEGER)
         {
-            printf("%s: %llu\r\n", app_kv.values[i].name, app_kv.values[i].value_uint);
+            LOG_INFO("%s: %llu", app_kv.values[i].name, app_kv.values[i].value_uint);
         }
         else if (app_kv.values[i].type == VALUE_TYPE_BYTESLICE)
         {
-            printf("%s: %s\r\n", app_kv.values[i].name, app_kv.values[i].value_slice);
+            LOG_INFO("%s: %s", app_kv.values[i].name, app_kv.values[i].value_slice);
         }
     }
 
@@ -245,8 +246,6 @@ vertices_wallet_run(void const *arg)
 
     while (1)
     {
-        printf("👋\r\n");
-
         size_t queue_size = 1;
         while (queue_size && err_code == VTC_SUCCESS)
         {

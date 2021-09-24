@@ -39,7 +39,6 @@
 #include <stdbool.h>
 #include "timedate.h"
 #include "flash.h"
-#include "msg.h"
 #include "net_connect.h"
 #include "cloud.h"
 

@@ -39,10 +39,6 @@ extern "C" {
  * @{
  */
 
-/** @addtogroup IOTA_Client
- * @{
- */
-
 /** @defgroup TIME Time
  * @{
  */

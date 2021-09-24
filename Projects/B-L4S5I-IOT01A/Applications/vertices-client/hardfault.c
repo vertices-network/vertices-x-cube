@@ -8,12 +8,13 @@
 #include <FreeRTOS.h>
 #include <task.h>
 #include <stdio.h>
+#include <vertices_log.h>
 #include "hardfault.h"
 
 static void
 recover_from_task_fault(void)
 {
-    printf("Recovered from %s\r\n", pcTaskGetName(NULL));
+    LOG_ERROR("Recovered from %s\r\n", pcTaskGetName(NULL));
 
     // TODO get back to running state by restarting the task somehow
     // at the moment we still reset the target as there is no proper handling

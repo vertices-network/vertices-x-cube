@@ -20,6 +20,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <vertices_log.h>
 #include "sensors_data.h"
 
 #include "stm32l4xx_hal.h"
@@ -27,7 +28,6 @@
 #include "stm32l475e_iot01_env_sensors.h"
 #include "stm32l475e_iot01_motion_sensors.h"
 #include "vl53l0x_proximity.h"
-#include "msg.h"
 
 #include "timingSystem.h"
 
@@ -59,84 +59,84 @@ init_sensors(void)
     ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_ENV_SENSOR_Init(ENV_HUMIDITY) returns %ld\n", ret);
+        LOG_ERROR("BSP_ENV_SENSOR_Init(ENV_HUMIDITY) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_ENV_SENSOR_Init(ENV_TEMPERATURE) returns %ld\n", ret);
+        LOG_ERROR("BSP_ENV_SENSOR_Init(ENV_TEMPERATURE) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_ENV_SENSOR_Enable(ENV_HUMIDITY) returns %ld\n", ret);
+        LOG_ERROR("BSP_ENV_SENSOR_Enable(ENV_HUMIDITY) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_ENV_SENSOR_Enable(ENV_TEMPERATURE) returns %ld\n", ret);
+        LOG_ERROR("BSP_ENV_SENSOR_Enable(ENV_TEMPERATURE) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_PRESSURE, ENV_PRESSURE);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_ENV_SENSOR_Init(ENV_PRESSURE) returns %ld\n", ret);
+        LOG_ERROR("BSP_ENV_SENSOR_Init(ENV_PRESSURE) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_PRESSURE, ENV_PRESSURE);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_ENV_SENSOR_Enable(ENV_PRESSURE) returns %ld\n", ret);
+        LOG_ERROR("BSP_ENV_SENSOR_Enable(ENV_PRESSURE) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_MOTION_SENSOR_Init(INSTANCE_MAGNETOMETER, MOTION_MAGNETO);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_MOTION_SENSOR_Init(MOTION_MAGNETO) returns %ld\n", ret);
+        LOG_ERROR("BSP_MOTION_SENSOR_Init(MOTION_MAGNETO) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_MOTION_SENSOR_Enable(INSTANCE_MAGNETOMETER, MOTION_MAGNETO);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_MOTION_SENSOR_Enable(MOTION_MAGNETO) returns %ld\n", ret);
+        LOG_ERROR("BSP_MOTION_SENSOR_Enable(MOTION_MAGNETO) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_MOTION_SENSOR_Init(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_GYRO);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_MOTION_SENSOR_Init(MOTION_GYRO) returns %ld\n", ret);
+        LOG_ERROR("BSP_MOTION_SENSOR_Init(MOTION_GYRO) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_MOTION_SENSOR_Init(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_ACCELERO);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_MOTION_SENSOR_Init(MOTION_ACCELERO) returns %ld\n", ret);
+        LOG_ERROR("BSP_MOTION_SENSOR_Init(MOTION_ACCELERO) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_MOTION_SENSOR_Enable(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_ACCELERO);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_MOTION_SENSOR_Enable(MOTION_ACCELERO) returns %ld\n", ret);
+        LOG_ERROR("BSP_MOTION_SENSOR_Enable(MOTION_ACCELERO) returns %ld\n", ret);
         goto error;
     }
 
     ret = BSP_MOTION_SENSOR_Enable(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_GYRO);
     if (ret != BSP_ERROR_NONE)
     {
-        msg_error("BSP_MOTION_SENSOR_Enable(MOTION_GYRO) returns %ld\n", ret);
+        LOG_ERROR("BSP_MOTION_SENSOR_Enable(MOTION_GYRO) returns %ld\n", ret);
         goto error;
     }
 

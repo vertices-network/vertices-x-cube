@@ -4,6 +4,7 @@
 
 #include <net_connect.h>
 #include <http.h>
+#include <vertices_log.h>
 #include "vertices_http.h"
 
 #define HTTP_READ_WRITE_BUFFER_SIZE 1024
@@ -43,7 +44,7 @@ response_code(void *opaque, int code)
 {
     *(uint32_t *) opaque = code;
 
-    printf("HTTP response code: %u\r\n", code);
+    LOG_INFO("HTTP response code: %u", code);
 }
 
 static http_funcs_t responseFuncs = {
@@ -92,7 +93,7 @@ http_connect(const provider_info_t *provider, char *url)
 
     if (net_if_gethostbyname(NULL, (sockaddr_t *) &addr, (char_t *) m_hostname) < 0)
     {
-        printf("Could not find hostname ipaddr %s\r\n", m_hostname);
+        LOG_ERROR("Could not find hostname ipaddr %s", m_hostname);
         return VTC_ERROR_HTTP_BASE;
     }
 
@@ -221,7 +222,7 @@ http_get(const provider_info_t *provider,
         int ndata = net_recv(m_socket, buffer, sizeof(buffer), 0);
         if (ndata <= 0)
         {
-            printf("Error receiving data\r\n");
+            LOG_ERROR("Error receiving data\r\n");
             http_parser_free(&rt);
             return VTC_ERROR_HTTP_BASE;
         }
@@ -278,7 +279,7 @@ http_post(const provider_info_t *provider,
     ret = net_send(m_socket, (uint8_t *) request_str, bytes_to_send, 0);
     if (bytes_to_send != ret)
     {
-        printf("Error sending header: %i\r\n", ret);
+        LOG_ERROR("Error sending header: %i", ret);
 
         return VTC_ERROR_HTTP_BASE;
     }
@@ -287,7 +288,7 @@ http_post(const provider_info_t *provider,
     ret = net_send(m_socket, (uint8_t *) body, body_size, 0);
     if (ret != body_size)
     {
-        printf("Error sending body: %i\r\n", ret);
+        LOG_ERROR("Error sending body: %i", ret);
 
         return VTC_ERROR_HTTP_BASE;
     }
@@ -303,7 +304,7 @@ http_post(const provider_info_t *provider,
         int ndata = net_recv(m_socket, buffer, sizeof(buffer), 0);
         if (ndata <= 0)
         {
-            printf("Error receiving data\r\n");
+            LOG_ERROR("Error receiving data");
             http_parser_free(&rt);
             return VTC_ERROR_HTTP_BASE;
         }
@@ -329,7 +330,7 @@ http_close(void)
         ret = net_closesocket(m_socket);
         if (ret != NET_OK)
         {
-            printf("ERROR: net_closesocket ret %i", ret);
+            LOG_INFO("ERROR: net_closesocket ret %i", ret);
         }
     }
 

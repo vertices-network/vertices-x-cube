@@ -20,10 +20,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
 #include <stdio.h>
+#include <vertices_log.h>
 #include "main.h"
 #include "timedate.h"
 #include "net_connect.h"
-#include "msg.h"
 
 /** Host from which the time/date will be retrieved.*/
 #ifdef USE_CLEAR_TIMEDATE
@@ -86,17 +86,17 @@ setRTCTimeDateFromNetwork(bool force_apply)
     while ((net_if_gethostbyname(NULL, (sockaddr_t *) &addr, (char_t *) TIME_SOURCE_HTTP_HOST) < 0)
         && (count-- > 0))
     {
-        msg_warning("Could not find hostname ipaddr %s\nRetrying...\n", TIME_SOURCE_HTTP_HOST);
+        LOG_WARNING("Could not find hostname ipaddr %s\nRetrying...", TIME_SOURCE_HTTP_HOST);
         HAL_Delay(1000);
     }
 
     if (count < 0)
     {
-        msg_error("Could not find hostname ipaddr %s\nAbandon.\n", TIME_SOURCE_HTTP_HOST);
+        LOG_ERROR("Could not find hostname ipaddr %s\nAbandon.", TIME_SOURCE_HTTP_HOST);
         return TD_ERR_CONNECT;
     }
 
-    msg_info("Connecting to %s at ipaddress: %s\n",
+    LOG_INFO("Connecting to %s at ipaddress: %s",
              TIME_SOURCE_HTTP_HOST,
              net_ntoa_r(&addr.sin_addr, (char_t *) buffer, NET_BUF_SIZE));
     memset(buffer, 0, sizeof(buffer));
@@ -106,7 +106,7 @@ setRTCTimeDateFromNetwork(bool force_apply)
 
     if (sock < 0)
     {
-        msg_error("Could not create the socket.\n");
+        LOG_ERROR("Could not create the socket.\n");
     }
     else
     {
@@ -151,7 +151,7 @@ setRTCTimeDateFromNetwork(bool force_apply)
 
     if (ret != NET_OK)
     {
-        msg_error("Could not set the socket options.\n");
+        LOG_ERROR("Could not set the socket options.");
     }
     else
     {
@@ -159,29 +159,29 @@ setRTCTimeDateFromNetwork(bool force_apply)
 
         while (((ret = net_connect(sock, (sockaddr_t *) &addr, sizeof(addr))) < 0) && (count-- > 0))
         {
-            msg_warning("Could not open the connection.\n");
+            LOG_WARNING("Could not open the connection.");
             if (ret == NET_ERROR_AUTH_FAILURE)
             {
-                msg_error(
-                    "An incorrect system time may have resulted in a TLS authentication error.\n");
+                LOG_ERROR(
+                    "An incorrect system time may have resulted in a TLS authentication error.");
                 rc = TD_ERR_TLS_CERT;
                 break;
             }
-            msg_warning("Retrying...\n");
+            LOG_WARNING("Retrying...\n");
             HAL_Delay(1000);
         }
     }
 
     if ((ret != NET_OK) || (rc != TD_OK))
     {
-        msg_error("Could not open the connection.\n");
+        LOG_ERROR("Could not open the connection.");
     }
     else
     {
         ret = net_send(sock, (uint8_t *) http_request, len, 0);
         if (ret != len)
         {
-            msg_error("Could not send %d bytes.\n", len);
+            LOG_ERROR("Could not send %d bytes.", len);
         }
         else
         {
@@ -201,7 +201,7 @@ setRTCTimeDateFromNetwork(bool force_apply)
 
             if (dateStr == NULL)
             {
-                msg_error("No 'Date:' line found in the HTTP response header.\n");
+                LOG_ERROR("No 'Date:' line found in the HTTP response header.");
                 rc = TD_ERR_HTTP;
             }
             else
@@ -226,8 +226,8 @@ setRTCTimeDateFromNetwork(bool force_apply)
                                    &sec);
                 if (count < 8)
                 {
-                    msg_error(
-                        "At time initialization, only %d out of the 8 time/date data could be parsed from the HTTP response %s\n",
+                    LOG_ERROR(
+                        "At time initialization, only %d out of the 8 time/date data could be parsed from the HTTP response %s",
                         count,
                         buffer);
                     rc = TD_ERR_HTTP;
@@ -236,7 +236,7 @@ setRTCTimeDateFromNetwork(bool force_apply)
                 {
                     char *str = strstr(dateStr, "\r\n");
                     str[0] = '\0';
-                    printf("Configuring the RTC from %s\r\n", dateStr);
+                    LOG_INFO("Configuring the RTC from %s", dateStr);
 
                     RTC_TimeTypeDef sTime;
                     sTime.Hours = hour;
