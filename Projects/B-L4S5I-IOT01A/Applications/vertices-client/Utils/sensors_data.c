@@ -50,98 +50,99 @@ static int32_t sensors_inited;
   * @retval 0  in case of success
   *         <0 BSP error code in case of failure
   */
-int init_sensors(void)
+int
+init_sensors(void)
 {
-  int32_t ret = 0;
+    int32_t ret = 0;
 
-  /* For sensors combos, must do the two initializations first, then the enables */
-  ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_ENV_SENSOR_Init(ENV_HUMIDITY) returns %ld\n", ret);
-    goto error;
-  }
+    /* For sensors combos, must do the two initializations first, then the enables */
+    ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_ENV_SENSOR_Init(ENV_HUMIDITY) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_ENV_SENSOR_Init(ENV_TEMPERATURE) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_ENV_SENSOR_Init(ENV_TEMPERATURE) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_ENV_SENSOR_Enable(ENV_HUMIDITY) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_ENV_SENSOR_Enable(ENV_HUMIDITY) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_ENV_SENSOR_Enable(ENV_TEMPERATURE) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_ENV_SENSOR_Enable(ENV_TEMPERATURE) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_PRESSURE, ENV_PRESSURE);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_ENV_SENSOR_Init(ENV_PRESSURE) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_ENV_SENSOR_Init(INSTANCE_TEMPERATURE_PRESSURE, ENV_PRESSURE);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_ENV_SENSOR_Init(ENV_PRESSURE) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_PRESSURE, ENV_PRESSURE);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_ENV_SENSOR_Enable(ENV_PRESSURE) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_ENV_SENSOR_Enable(INSTANCE_TEMPERATURE_PRESSURE, ENV_PRESSURE);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_ENV_SENSOR_Enable(ENV_PRESSURE) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_MOTION_SENSOR_Init(INSTANCE_MAGNETOMETER, MOTION_MAGNETO);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_MOTION_SENSOR_Init(MOTION_MAGNETO) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_MOTION_SENSOR_Init(INSTANCE_MAGNETOMETER, MOTION_MAGNETO);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_MOTION_SENSOR_Init(MOTION_MAGNETO) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_MOTION_SENSOR_Enable(INSTANCE_MAGNETOMETER, MOTION_MAGNETO);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_MOTION_SENSOR_Enable(MOTION_MAGNETO) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_MOTION_SENSOR_Enable(INSTANCE_MAGNETOMETER, MOTION_MAGNETO);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_MOTION_SENSOR_Enable(MOTION_MAGNETO) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_MOTION_SENSOR_Init(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_GYRO);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_MOTION_SENSOR_Init(MOTION_GYRO) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_MOTION_SENSOR_Init(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_GYRO);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_MOTION_SENSOR_Init(MOTION_GYRO) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_MOTION_SENSOR_Init(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_ACCELERO);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_MOTION_SENSOR_Init(MOTION_ACCELERO) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_MOTION_SENSOR_Init(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_ACCELERO);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_MOTION_SENSOR_Init(MOTION_ACCELERO) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_MOTION_SENSOR_Enable(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_ACCELERO);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_MOTION_SENSOR_Enable(MOTION_ACCELERO) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_MOTION_SENSOR_Enable(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_ACCELERO);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_MOTION_SENSOR_Enable(MOTION_ACCELERO) returns %ld\n", ret);
+        goto error;
+    }
 
-  ret = BSP_MOTION_SENSOR_Enable(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_GYRO);
-  if (ret != BSP_ERROR_NONE)
-  {
-    msg_error("BSP_MOTION_SENSOR_Enable(MOTION_GYRO) returns %ld\n", ret);
-    goto error;
-  }
+    ret = BSP_MOTION_SENSOR_Enable(INSTANCE_GYROSCOPE_ACCELEROMETER, MOTION_GYRO);
+    if (ret != BSP_ERROR_NONE)
+    {
+        msg_error("BSP_MOTION_SENSOR_Enable(MOTION_GYRO) returns %ld\n", ret);
+        goto error;
+    }
 
-  VL53L0X_PROXIMITY_Init();
+    VL53L0X_PROXIMITY_Init();
 
-  error:
+    error:
 
     sensors_inited = ret;
     return ret;
@@ -154,40 +155,52 @@ int init_sensors(void)
   * @retval 0 in case of success
   *         -1 in case of failure
   */
-int SensorDataToJSON(char *buffer, int buf_len)
+int
+SensorDataToJSON(char *buffer, int buf_len)
 {
-  char device[] = "B-L4S5I-IOT01A";
-  float_t Temp, Humi;
-  int size;
-  int32_t rc = 0;
+    char device[] = "B-L4S5I-IOT01A";
+    float_t Temp, Humi;
+    int size;
+    int32_t rc = 0;
 
-  if(buffer != NULL)
-  {
-    if(0 != sensors_inited)
+    if (buffer != NULL)
     {
-      rc = -1;
+        if (0 != sensors_inited)
+        {
+            rc = -1;
 
-    } else {
-      (void)BSP_ENV_SENSOR_GetValue(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE, &Temp);
-      (void)BSP_ENV_SENSOR_GetValue(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY, &Humi);
+        }
+        else
+        {
+            (void) BSP_ENV_SENSOR_GetValue(INSTANCE_TEMPERATURE_HUMIDITY, ENV_TEMPERATURE, &Temp);
+            (void) BSP_ENV_SENSOR_GetValue(INSTANCE_TEMPERATURE_HUMIDITY, ENV_HUMIDITY, &Humi);
 
-      time_t timestamp = TimingSystemGetSystemTime();
+            time_t timestamp = TimingSystemGetSystemTime();
 
 #if (defined(__GNUC__) && !defined(__CC_ARM))
-      size = snprintf(buffer, buf_len, "{\"Device\":\"%s\",\"time\":%lld,\"temp\":%.2f,\"humi\":%.2f}", device, timestamp, Temp, Humi);
+            size = snprintf(buffer,
+                            buf_len,
+                            "{\"Device\":\"%s\",\"time\":%lld,\"temp\":%.2f,\"humi\":%.2f}",
+                            device,
+                            timestamp,
+                            Temp,
+                            Humi);
 #else
-      size = snprintf(buffer, buf_len, "{\"Device\":\"%s\",\"time\":%lu,\"temp\":%.2f,\"humi\":%.2f}", device, timestamp, Temp, Humi);
+            size = snprintf(buffer, buf_len, "{\"Device\":\"%s\",\"time\":%lu,\"temp\":%.2f,\"humi\":%.2f}", device, timestamp, Temp, Humi);
 #endif /* __GNUC__ */
 
-      if (size <= 0) {
-        rc = -1;
-      }
+            if (size <= 0)
+            {
+                rc = -1;
+            }
+        }
     }
-  } else {
-    rc = -1;
-  }
+    else
+    {
+        rc = -1;
+    }
 
-  return rc;
+    return rc;
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
