@@ -268,6 +268,7 @@ link_directories(${CMAKE_CURRENT_SOURCE_DIR} ${SDK_ROOT}/Middlewares/Third_Party
 link_libraries(
         c
         m
+        sodium
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES} ${LINKER_SCRIPT} ${KEYS_OBJ})

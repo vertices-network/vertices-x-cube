@@ -238,6 +238,88 @@ http_get(const provider_info_t *provider,
     return VTC_SUCCESS;
 }
 
+ret_code_t
+http_post(const provider_info_t *provider,
+          const char *relative_path,
+          char *headers,
+          const char *body,
+          size_t body_size,
+          uint32_t *response_code)
+{
+    int32_t ret = 0;
+
+    if (m_socket < 0)
+    {
+        return VTC_ERROR_INVALID_STATE;
+    }
+
+    char request_str[HTTP_READ_WRITE_BUFFER_SIZE] = {0};
+
+    if (m_hostname[0] == 0)
+    {
+        bool is_secure;
+        parse_url(provider->url, &is_secure);
+    }
+
+    int32_t bytes_to_send = snprintf(request_str,
+                                     sizeof(request_str),
+                                     "POST /%s %s\r\n"
+                                     "Host: %s\r\n"
+                                     "Content-Length: %d\r\n"
+                                     "%s\r\n\r\n",
+                                     relative_path[0] == '/' ? &relative_path[1] : relative_path,
+                                     HTTP_HEADER,
+                                     m_hostname,
+                                     body_size,
+                                     (headers == NULL) ? "" : headers);
+    VTC_ASSERT_BOOL(bytes_to_send < sizeof(request_str));
+
+    // send headers
+    ret = net_send(m_socket, (uint8_t *) request_str, bytes_to_send, 0);
+    if (bytes_to_send != ret)
+    {
+        printf("Error sending header: %i\r\n", ret);
+
+        return VTC_ERROR_HTTP_BASE;
+    }
+
+    // send body
+    ret = net_send(m_socket, (uint8_t *) body, body_size, 0);
+    if (ret != body_size)
+    {
+        printf("Error sending body: %i\r\n", ret);
+
+        return VTC_ERROR_HTTP_BASE;
+    }
+
+    http_roundtripper_t rt;
+    http_parser_init(&rt, responseFuncs, response_code);
+
+    bool needmore = true;
+    uint8_t buffer[HTTP_READ_WRITE_BUFFER_SIZE];
+    while (needmore)
+    {
+        const char *data = (char *) buffer;
+        int ndata = net_recv(m_socket, buffer, sizeof(buffer), 0);
+        if (ndata <= 0)
+        {
+            printf("Error receiving data\r\n");
+            http_parser_free(&rt);
+            return VTC_ERROR_HTTP_BASE;
+        }
+
+        while (needmore && ndata)
+        {
+            int read;
+            needmore = http_parser_data(&rt, data, ndata, &read);
+            ndata -= read;
+            data += read;
+        }
+    }
+
+    return VTC_SUCCESS;
+}
+
 void
 http_close(void)
 {

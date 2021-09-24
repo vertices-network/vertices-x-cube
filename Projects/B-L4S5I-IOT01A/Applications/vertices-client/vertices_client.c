@@ -7,6 +7,8 @@
 #include <vertices.h>
 #include <string.h>
 #include "vertices_client.h"
+#include <sodium.h>
+#include <mbedtls/base64.h>
 
 static ret_code_t
 vertices_evt_handler(vtc_evt_t *evt);
@@ -56,8 +58,68 @@ vertices_evt_handler(vtc_evt_t *evt)
 {
     ret_code_t err_code = VTC_SUCCESS;
 
-    printf("💥 Evt: %u\r\n", evt->type);
+    switch (evt->type)
+    {
+        case VTC_EVT_TX_READY_TO_SIGN:
+        {
+            signed_transaction_t *tx = NULL;
+            err_code = vertices_event_tx_get(evt->bufid, &tx);
+            if (err_code == VTC_SUCCESS)
+            {
+                printf("About to sign tx: data length %u\r\n", tx->payload_body_length);
 
+                // libsodium wants to have private and public keys concatenated
+                unsigned char keys[crypto_sign_ed25519_SECRETKEYBYTES] = {0};
+                memcpy(keys, alice_account.private_key, sizeof(alice_account.private_key));
+                memcpy(&keys[32],
+                       alice_account.vtc_account->public_key,
+                       ADDRESS_LENGTH);
+
+                // prepend "TX" to the payload before signing
+                unsigned char to_be_signed[tx->payload_body_length + 2];
+                to_be_signed[0] = 'T';
+                to_be_signed[1] = 'X';
+                memcpy(&to_be_signed[2],
+                       &tx->payload[tx->payload_header_length],
+                       tx->payload_body_length);
+
+                // sign the payload
+                crypto_sign_ed25519_detached(tx->signature,
+                                             0, to_be_signed, tx->payload_body_length + 2, keys);
+
+                char b64_signature[128] = {0};
+                size_t b64_signature_len = sizeof(b64_signature);
+
+                mbedtls_base64_encode((uint8_t *) b64_signature,
+                                      sizeof(b64_signature),
+                                      &b64_signature_len,
+                                      tx->signature,
+                                      sizeof(tx->signature));
+//                b64_encode((const char *) tx->signature,
+//                           sizeof(tx->signature),
+//                           b64_signature,
+//                           &b64_signature_len);
+                printf("Signature %s (%u bytes)\r\n", b64_signature, b64_signature_len);
+
+                // let's push the new state
+                evt->type = VTC_EVT_TX_SENDING;
+                err_code = vertices_event_schedule(evt);
+            }
+        }
+            break;
+
+        case VTC_EVT_TX_SENDING:
+        {
+            // nothing to be done on our side
+        }
+            break;
+
+        default:
+        {
+            printf("Unhandled event: %u\r\n", evt->type);
+        }
+            break;
+    }
     return err_code;
 }
 
@@ -149,13 +211,25 @@ vertices_wallet_run(void const *arg)
     VTC_ASSERT(err_code);
 
     // send assets from Alice's account to Bob's account
-    char notes[64] = {0};
-    size_t len = sprintf(notes, "Alice sent %lu Algos to Bob", (uint32_t) AMOUNT_SENT / 1.e6);
-    VTC_ASSERT_BOOL(len < 64);
+    char notes[] = "Alice sent algos to Bob from B-L4S5I-IOT01A";
+
+    err_code =
+        vertices_transaction_pay_new(alice_account.vtc_account,
+                                     (char *) bob_account.vtc_account->public_b32,
+                                     AMOUNT_SENT,
+                                     notes);
+    VTC_ASSERT(err_code);
 
     while (1)
     {
         printf("👋\r\n");
+
+        size_t queue_size = 1;
+        while (queue_size && err_code == VTC_SUCCESS)
+        {
+            err_code = vertices_event_process(&queue_size);
+        }
+
         osDelay(1000);
     }
 }
