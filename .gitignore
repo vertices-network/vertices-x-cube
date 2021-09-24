@@ -19,3 +19,8 @@ __pycache__/
 
 # docs
 _htmresc/
+
+# Custom config with secrets
+.config.cmake
+private_key.bin
+public_b32.txt
