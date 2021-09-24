@@ -38,10 +38,6 @@ extern "C" {
  * @{
  */
 
-/** @addtogroup IOTA_Client
- * @{
- */
-
 /** @defgroup NET_Config Net Config
  * @{
  */
