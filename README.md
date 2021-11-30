@@ -11,7 +11,18 @@ boards.
 The simplest way to start using this expansion software is to run the
 [vertices-client](Projects/B-L4S5I-IOT01A/Applications/vertices-client) sample application.
 
+The project is based on the [IOTA implementation](https://www.st.com/en/embedded-software/x-cube-iota1.html).
+
 ## Getting started
+
+### Get the source
+
+Make sure to pull the submodules when cloning the repository as the Vertices SDK is included
+in the project using a git submodule:
+
+```
+git clone --recurse-submodules git@github.com:vertices-network/vertices-x-cube.git
+```
 
 ### Setting up the environment
 
@@ -29,18 +40,29 @@ conda activate vertices
 
 ### Custom configuration
 
+#### Wi-Fi credentials
+
 The [readme](Projects/B-L4S5I-IOT01A/Applications/vertices-client/README.md) 
 included in sample application provides instructions about setting your Wi-Fi 
 credentials.
+
+#### Algorand account
+
+You will need to copy the private and public key of your Algorand account. You can use Vertices Unix example to create a new account or Algokey. Check-out [Vertices' documentation](https://docs.vertices.network/vertices-sdk/quickstart/unix/new-account)
 
 ### Compile
 
 It's now time to compile the example:
 
 ```shell
+# from the root directory
 mkdir build
 cd build
 cmake .. -DCMAKE_TOOLCHAIN_FILE=../utils/cmake/arm-gcc-toolchain.cmake
+
+# build the example
+# the ELF file to be loaded on the board will be located in 
+# build/Projects/B-L4S5I-IOT01A/Applications/vertices-client/vertices-example.elf
 make vertices-example
 ```
 
