@@ -270,5 +270,3 @@ target_link_options(vertices PRIVATE -mcpu=cortex-m4 -mthumb -mfloat-abi=hard)
 target_link_libraries(${PROJECT_NAME} PRIVATE vertices)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX .elf)
-
-firmware_size(${PROJECT_NAME})
