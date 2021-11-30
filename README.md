@@ -11,7 +11,7 @@ boards.
 The simplest way to start using this expansion software is to run the
 [vertices-client](Projects/B-L4S5I-IOT01A/Applications/vertices-client) sample application.
 
-The project is based on the [IOTA implementation](https://www.st.com/en/embedded-software/x-cube-iota1.html).
+The project is based on the [IOTA implementation](https://www.st.com/en/embedded-software/x-cube-iota1.html). The implementation has been kept into this project.
 
 ## Getting started
 
@@ -48,7 +48,7 @@ credentials.
 
 #### Algorand account
 
-You will need to copy the private and public key of your Algorand account. You can use Vertices Unix example to create a new account or Algokey. Check-out [Vertices' documentation](https://docs.vertices.network/vertices-sdk/quickstart/unix/new-account)
+The project example uses an account to send money to another one. You will need to copy two files corresponding to the private and public key of the sending account into `Projects/B-L4S5I-IOT01A/Applications/vertices-client/` to have this account used. You can use Vertices Unix example to create a new account or Algokey, both of them can be used to obtain the two files containing the keys. Check-out [Vertices' documentation](https://docs.vertices.network/vertices-sdk/quickstart/unix/new-account).
 
 ### Compile
 
@@ -65,4 +65,3 @@ cmake .. -DCMAKE_TOOLCHAIN_FILE=../utils/cmake/arm-gcc-toolchain.cmake
 # build/Projects/B-L4S5I-IOT01A/Applications/vertices-client/vertices-example.elf
 make vertices-example
 ```
-
