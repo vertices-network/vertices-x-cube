@@ -8,10 +8,12 @@ different STM32 microcontrollers. The software comes with sample
 implementations on how to use the Vertices middleware on the STM32 based 
 boards.
 
+The project is based on the [IOTA implementation](https://www.st.com/en/embedded-software/x-cube-iota1.html). The implementation has been kept into this project.
+
 The simplest way to start using this expansion software is to run the
 [vertices-client](Projects/B-L4S5I-IOT01A/Applications/vertices-client) sample application.
 
-The project is based on the [IOTA implementation](https://www.st.com/en/embedded-software/x-cube-iota1.html). The implementation has been kept into this project.
+> ⚠️ This project is a demo to show the capabilities of the Vertices SDK on STM32 microcontrollers. It shouldn't be used in production without major modifications.
 
 ## Getting started
 
